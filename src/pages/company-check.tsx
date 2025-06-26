@@ -56,17 +56,17 @@ export function CompanyCheckPage() {
   };
 
  return (
-<div className='h-screen flex flex-row items-center'>
-  <div className="h-screen px-4 sm:px-6 md:px-8 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"> {/* ✅ Responsive padding */}
+
+  <div className='h-screen w-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative'> {/* ✅ Responsive padding */}
     <div className="absolute top-4 right-4">
       <LanguageSelector />
     </div>
 
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen p-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center justify-center w-full max-w-full lg:max-w-4xl mx-auto px-4 sm:px-6 lg:px-0 space-y-8" 
+        className="w-full max-w-xl mx-auto px-4 sm:px-6 lg:px-0 space-y-8"
       >
         {/* Header */}
         <div className="text-center space-y-4">
@@ -207,7 +207,7 @@ export function CompanyCheckPage() {
       </motion.div>
     </div>
   </div>
-</div>
+
 );
 
 } 
