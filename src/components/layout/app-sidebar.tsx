@@ -13,8 +13,10 @@ import {
   BarChart3,
   Settings,
   ChevronLeft,
-  Building2
+  Building2,
+  User,
 } from 'lucide-react';
+
 
 interface NavItem {
   key: string;
@@ -24,6 +26,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { key: 'nav.dashboard', icon: LayoutDashboard, href: '/dashboard' },
+  { key: 'Hr services', icon: User, href: '/company' },
   { key: 'nav.employees', icon: Users, href: '/employees' },
   { key: 'nav.attendance', icon: Clock, href: '/attendance' },
   { key: 'nav.payroll', icon: Wallet, href: '/payroll' },

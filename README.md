@@ -23,7 +23,7 @@
 
 ## 🛠 Tech Stack
 
-| Tech                         | Purpose                                |
+| Tech                         | Purpose                               |
 |-----------------------------|----------------------------------------|
 | React + TypeScript          | Frontend logic & structure             |
 | Tailwind CSS                | Utility-first responsive styling       |
@@ -34,6 +34,7 @@
 | i18next                     | Multi-language support                 |
 | Axios                       | API calls                              |
 | PWA (Vite + Service Worker) | Offline support & app installation     |
+| radix ui                    | reusable components                    |
 
 ---
 

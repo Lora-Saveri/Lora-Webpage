@@ -191,13 +191,13 @@ export function LoginPage() {
                                 type="button"
                                 variant="ghost"
                                 size="icon"
-                                className="absolute right-0 top-0 h-11 w-10"
+                                className="absolute right-0 top-0 h-15 w-15"
                                 onClick={() => setShowPassword(!showPassword)}
                               >
                                 {showPassword ? (
-                                  <EyeOff className="h-4 w-4" />
+                                  <EyeOff className="h-30 w-30" />
                                 ) : (
-                                  <Eye className="h-4 w-4" />
+                                  <Eye className="h-30 w-30" />
                                 )}
                               </Button>
                             </div>
@@ -211,7 +211,7 @@ export function LoginPage() {
                       <Button
                         type="button"
                         variant="link"
-                        className="px-0 text-sm"
+                        className="px-0 text-sm bg-white/70"
                         onClick={handleForgotPassword}
                       >
                         {t('login.forgotPassword')}

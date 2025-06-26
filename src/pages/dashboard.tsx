@@ -109,7 +109,7 @@ export function DashboardPage() {
 
   if (isLoading || !stats) {
     return (
-      <div className="flex items-center justify-center h-96 w-full">
+      <div className="flex items-center justify-center h-full w-full">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
