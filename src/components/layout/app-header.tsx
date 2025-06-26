@@ -39,7 +39,7 @@ export function AppHeader() {
       <div className="flex items-center gap-4">
         <LanguageSelector />
         
-        <Button variant="ghost" size="icon" className="relative">
+        <Button variant="ghost"  className="relative">
           <Bell className="h-5 w-5" />
           <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full text-xs flex items-center justify-center text-white">
             3

@@ -53,7 +53,7 @@ export function AppSidebar({ isOpen, onToggle }: AppSidebarProps) {
           initial={false}
           animate={{ opacity: isOpen ? 1 : 0 }}
           transition={{ duration: 0.2 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 text-white"
         >
           <Building2 className="h-8 w-8 text-primary" />
           {isOpen && (
@@ -68,7 +68,7 @@ export function AppSidebar({ isOpen, onToggle }: AppSidebarProps) {
           variant="ghost"
           size="icon"
           onClick={onToggle}
-          className="h-8 w-8"
+          className="h-10 w-50"
         >
           <ChevronLeft 
             className={cn(
@@ -94,7 +94,7 @@ export function AppSidebar({ isOpen, onToggle }: AppSidebarProps) {
                 <Button
                   variant={isActive ? "secondary" : "ghost"}
                   className={cn(
-                    "w-full justify-start gap-3 h-10",
+                    "w-full justify-start gap-3 h-10 text-black",
                     !isOpen && "justify-center px-0",
                     isActive && "bg-primary/10 text-primary hover:bg-primary/15"
                   )}
