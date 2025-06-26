@@ -146,7 +146,7 @@ export function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {statsCards.map((card, index) => {
           const Icon = card.icon;
-          let value = stats[card.field];
+          let value: string | number = stats[card.field];
           
           if (card.format) {
             value = card.format(value as number);
@@ -196,7 +196,7 @@ export function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {quickStats.map((stat, index) => {
+              {quickStats.map((stat) => {
                 const Icon = stat.icon;
                 return (
                   <div key={stat.label} className="text-center space-y-2">
