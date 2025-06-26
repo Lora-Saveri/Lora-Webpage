@@ -15,6 +15,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { apiService } from '@/services/api';
 import { Eye, EyeOff, Building2, ArrowLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import Lottie from "lottie-react";
+import hrAnimation from "@/assets/login.json";
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -91,8 +93,13 @@ export function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="absolute top-4 left-4">
+    <div className="h-screen w-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative">
+      <Lottie
+        animationData={hrAnimation}
+        loop
+        className="absolute top-0 left-0 w-full h-full opacity-10 z-0 pointer-events-none"
+      />
+      <div className="absolute top-4 left- w-full h-full">
         <Button variant="ghost" onClick={() => navigate('/')} className="gap-2">
           <ArrowLeft className="w-4 h-4" />
           Back
@@ -107,7 +114,7 @@ export function LoginPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="w-full max-w-md space-y-8"
+          className="w-full max-w-xl mx-auto px-4 sm:px-6 lg:px-0 space-y-8"
         >
           {/* Header */}
           <div className="text-center space-y-4">

@@ -11,6 +11,8 @@ import { apiService } from '@/services/api';
 import { Company } from '@/types';
 import { Search, Building2, Users, ArrowRight, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Lottie from "lottie-react";
+import hrAnimation from "@/assets/hrimg.json";
 
 export function CompanyCheckPage() {
   const [query, setQuery] = useState('');
@@ -57,7 +59,12 @@ export function CompanyCheckPage() {
 
  return (
 
-  <div className='h-screen w-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative'> {/* ✅ Responsive padding */}
+  <div className='h-screen w-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden'> {/* ✅ Responsive padding */}
+  <Lottie
+        animationData={hrAnimation}
+        loop
+        className="absolute top-0 left-0 w-full h-full opacity-10 z-0 pointer-events-none"
+      />
     <div className="absolute top-4 right-4">
       <LanguageSelector />
     </div>
