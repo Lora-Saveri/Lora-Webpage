@@ -109,7 +109,7 @@ export function DashboardPage() {
 
   if (isLoading || !stats) {
     return (
-      <div className="flex items-center justify-center h-full w-full">
+      <div className="flex items-center justify-center h-full w-full ">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
@@ -120,15 +120,15 @@ export function DashboardPage() {
   }
 
   return (
-    <div className="space-y-8 p-6">
+    <div className="space-y-8  mr-20 p-20  ml-20">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="space-y-2"
+        className="space-y-4 p-0 m-0"
       >
-        <h1 className="text-3xl font-bold text-foreground">{t('dashboard.title')}</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-3xl font-bold text-foreground p-0 m-0 ">{t('dashboard.title')}</h1>
+        <p className="text-muted-foreground ">
           {new Date().toLocaleDateString('en-US', { 
             weekday: 'long', 
             year: 'numeric', 

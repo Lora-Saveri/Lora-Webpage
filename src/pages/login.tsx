@@ -93,13 +93,13 @@ export function LoginPage() {
   };
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative">
+    <div className="h-screen w-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden z-0 p-0 m-0">
       <Lottie
         animationData={hrAnimation}
         loop
         className="absolute top-0 left-0 w-full h-full opacity-10 z-0 pointer-events-none"
       />
-      <div className="absolute top-4 left- w-full h-full">
+      <div className="absolute top-4 ml-1  hl">
         <Button variant="ghost" onClick={() => navigate('/')} className="gap-2">
           <ArrowLeft className="w-4 h-4" />
           Back

@@ -16,6 +16,8 @@ import {
   Building2,
   User,
 } from 'lucide-react';
+import { HrServices } from '@/pages/company';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 interface NavItem {
@@ -41,25 +43,26 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ isOpen, onToggle }: AppSidebarProps) {
+  const navigate=useNavigate()
   const { t } = useTranslation();
   const [activeItem, setActiveItem] = useState('/dashboard');
 
   return (
     <motion.aside
       initial={false}
-      animate={{ width: isOpen ? 280 : 80 }}
+      animate={{ width: isOpen ? 280 : 200 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
       className="relative flex flex-col bg-card border-r border-border h-full"
     >
-      <div className="flex items-center justify-between p-4 border-b border-border">
+      <div className="flex items-center justify-between pt-5 pb-2 border-b border-border">
         <motion.div
           initial={false}
-          animate={{ opacity: isOpen ? 1 : 0 }}
+          animate={{ opacity: isOpen ? 1 : 1 }}
           transition={{ duration: 0.2 }}
-          className="flex items-center gap-2 text-white"
+          className="flex items-center gap-2 "
         >
           <Building2 className="h-8 w-8 text-primary" />
-          {isOpen && (
+          { (
             <div>
               <h1 className="text-xl font-bold text-foreground">AIHR4U</h1>
               <p className="text-xs text-muted-foreground">Advanced HRMS</p>
@@ -82,8 +85,8 @@ export function AppSidebar({ isOpen, onToggle }: AppSidebarProps) {
         </Button>
       </div>
 
-      <ScrollArea className="flex-1 px-3 py-4">
-        <nav className="space-y-2">
+      <ScrollArea className="flex-5   px-0 py-5">
+        <nav className="space-y-2  ">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeItem === item.href;
@@ -97,13 +100,14 @@ export function AppSidebar({ isOpen, onToggle }: AppSidebarProps) {
                 <Button
                   variant={isActive ? "secondary" : "ghost"}
                   className={cn(
-                    "w-full justify-start gap-3 h-10 text-black",
-                    !isOpen && "justify-center px-0",
+                    "w-full justify-start gap-2 h-10  text-black ",
+                    !isOpen && "   px-2  ",
                     isActive && "bg-primary/10 text-primary hover:bg-primary/15"
                   )}
-                  onClick={() => setActiveItem(item.href)}
+                  onClick={() => {setActiveItem(item.href); navigate(item.href)} } 
                 >
-                  <Icon className="h-5 w-5 flex-shrink-0" />
+                
+                  <Icon className="h-5 w-5 flex-shrink-0 " />
                   <motion.span
                     initial={false}
                     animate={{ 

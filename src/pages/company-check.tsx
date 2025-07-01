@@ -59,17 +59,17 @@ export function CompanyCheckPage() {
 
  return (
 
-  <div className='h-screen w-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden'> {/* ✅ Responsive padding */}
+  <div className='flexed inset-0  h-screen w-screen justify-center items-center  flex  bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden p-0 m-0 z-0 '> {/* ✅ Responsive padding */}
   <Lottie
         animationData={hrAnimation}
         loop
         className="absolute top-0 left-0 w-full h-full opacity-10 z-0 pointer-events-none"
       />
-    <div className="absolute top-4 right-4">
+    <div className="absolute top-4 right-4 z-10">
       <LanguageSelector />
     </div>
 
-    <div className="flex flex-col items-center justify-center min-h-screen p-2">
+    <div className=" relative z-10 flex flex-col items-center justify-center min-h-screen p-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -201,10 +201,10 @@ export function CompanyCheckPage() {
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
                       {t('companyCheck.notFound')}
                     </p>
-                    <Button onClick={handleRegisterCompany} className="gap-2">
+                    {/* <Button onClick={handleRegisterCompany} className="gap-2">
                       <Plus className="w-4 h-4" />
                       {t('companyCheck.register')}
-                    </Button>
+                    </Button> */}
                   </div>
                 </motion.div>
               )}

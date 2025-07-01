@@ -12,6 +12,15 @@ import { AppHeader } from '@/components/layout/app-header';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import './i18n';
 import { useState } from 'react';
+import { HrServices } from './pages/company';
+import { Employee } from './pages/employees';
+import { Payroll } from './pages/Payroll';
+import { Leaves } from './pages/Leaves';
+import { Reports } from './pages/Reports';
+import { Settings } from 'lucide-react';
+import { Attendance } from './pages/Attendence';
+import { Setting } from './pages/Settings';
+import './App.css'
 
 // Protected Route Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -41,6 +50,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       <AppSidebar isOpen={sidebarOpen} onToggle={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex-1 flex flex-col overflow-hidden">
         <AppHeader />
+      
         <main className="flex-1 overflow-y-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -61,75 +71,72 @@ function AppRoutes() {
   const { user } = useAuth();
 
   return (
+    
     <Routes>
       <Route path="/" element={<CompanyCheckPage />} />
       <Route path="/login" element={
-        user ? <Navigate to="/dashboard" replace /> : <LoginPage />
+        user ? <Navigate to="/" replace /> : <LoginPage />
       } />
       <Route path="/dashboard" element={
         <ProtectedRoute>
           <AppLayout>
-            <DashboardPage />
+            <DashboardPage/>
+      
+          </AppLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/company" element={
+        <ProtectedRoute>
+          <AppLayout>
+            
+            <HrServices/>
           </AppLayout>
         </ProtectedRoute>
       } />
       <Route path="/employees" element={
         <ProtectedRoute>
           <AppLayout>
-            <div className="p-6">
-              <h1 className="text-2xl font-bold">Employees Module</h1>
-              <p className="text-muted-foreground mt-2">Coming soon...</p>
-            </div>
+            
+            
+ <Employee/>
           </AppLayout>
         </ProtectedRoute>
       } />
       <Route path="/attendance" element={
         <ProtectedRoute>
           <AppLayout>
-            <div className="p-6">
-              <h1 className="text-2xl font-bold">Attendance Module</h1>
-              <p className="text-muted-foreground mt-2">Coming soon...</p>
-            </div>
+            <Attendance/>
           </AppLayout>
         </ProtectedRoute>
       } />
       <Route path="/payroll" element={
         <ProtectedRoute>
           <AppLayout>
-            <div className="p-6">
-              <h1 className="text-2xl font-bold">Payroll Module</h1>
-              <p className="text-muted-foreground mt-2">Coming soon...</p>
-            </div>
+           
+            <Payroll/>
           </AppLayout>
         </ProtectedRoute>
       } />
       <Route path="/leaves" element={
         <ProtectedRoute>
           <AppLayout>
-            <div className="p-6">
-              <h1 className="text-2xl font-bold">Leave Management</h1>
-              <p className="text-muted-foreground mt-2">Coming soon...</p>
-            </div>
+           
+            <Leaves/>
           </AppLayout>
         </ProtectedRoute>
       } />
       <Route path="/reports" element={
         <ProtectedRoute>
           <AppLayout>
-            <div className="p-6">
-              <h1 className="text-2xl font-bold">Reports Module</h1>
-              <p className="text-muted-foreground mt-2">Coming soon...</p>
-            </div>
+            
+            <Reports/>
           </AppLayout>
         </ProtectedRoute>
       } />
       <Route path="/settings" element={
         <ProtectedRoute>
           <AppLayout>
-            <div className="p-6">
-              <h1 className="text-2xl font-bold">Settings</h1>
-              <p className="text-muted-foreground mt-2">Coming soon...</p>
-            </div>
+          <Setting/>
           </AppLayout>
         </ProtectedRoute>
       } />
@@ -155,6 +162,7 @@ function App() {
   }, []);
 
   return (
+    <div className="h-screen w-full overflow-y-auto">
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <AuthProvider>
         <Router>
@@ -169,6 +177,7 @@ function App() {
         </Router>
       </AuthProvider>
     </ThemeProvider>
+    </div>
   );
 }
 
