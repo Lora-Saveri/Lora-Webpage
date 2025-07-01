@@ -201,10 +201,10 @@ export function CompanyCheckPage() {
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
                       {t('companyCheck.notFound')}
                     </p>
-                    {/* <Button onClick={handleRegisterCompany} className="gap-2">
+                     <Button onClick={handleRegisterCompany} className="gap-2">
                       <Plus className="w-4 h-4" />
                       {t('companyCheck.register')}
-                    </Button> */}
+                    </Button> 
                   </div>
                 </motion.div>
               )}
