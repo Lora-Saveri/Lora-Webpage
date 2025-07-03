@@ -1,59 +1,85 @@
+import axios, { AxiosInstance, AxiosError } from 'axios';
 import { Company, User, DashboardStats, AttendanceData } from '@/types';
  
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.aihr4u.com';
+// ✅ Set base URL from .env or fallback to production URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://aihr4u.onrender.com/verify-company/';
+ 
+// ✅ Create Axios instance
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
  
 class ApiService {
-  private async handleResponse<T>(response: Response): Promise<T> {
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || 'API error');
+  private async handleRequest<T>(request: Promise<any>): Promise<T> {
+    try {
+      const response = await request;
+      return response.data;
+    } catch (error: any) {
+      const axiosError = error as AxiosError;
+      const message = axiosError.response?.data?.message || axiosError.message || 'API error';
+      throw new Error(message);
     }
-    return response.json();
   }
  
+  // ✅ Company Search
   async searchCompanies(query: string): Promise<Company[]> {
     if (!query.trim()) return [];
-    const url = new URL(`${API_BASE_URL}/companies`);
-    url.searchParams.append('query', query);
  
-    const res = await fetch(url.toString());
-    return this.handleResponse<Company[]>(res);
+    try {
+      const request = axiosInstance.get<Company[]>('/verify-company', {
+        params: { query },
+      });
+      return await this.handleRequest<Company[]>(request);
+    } catch (error: any) {
+      if (error.message === 'Company not found') {
+        return []; // gracefully return empty array
+      }
+      throw error;
+    }
   }
  
+  // ✅ Get Company by ID (optional)
   async getCompanyById(id: string): Promise<Company | null> {
-    const res = await fetch(`${API_BASE_URL}/companies/${id}`);
-    if (res.status === 404) return null;
-    return this.handleResponse<Company>(res);
+    try {
+      const request = axiosInstance.get<Company>(`/verify-company/${id}`);
+      return await this.handleRequest<Company>(request);
+    } catch (error: any) {
+      if (error.response?.status === 404) return null;
+      throw error;
+    }
   }
  
+  // ✅ Login
   async login(email: string, password: string): Promise<{ user: User; token: string }> {
-    const res = await fetch(`${API_BASE_URL}/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+    const request = axiosInstance.post<{ user: User; token: string }>('/login', {
+      email,
+      password,
     });
-    return this.handleResponse<{ user: User; token: string }>(res);
+    return this.handleRequest(request);
   }
  
+  // ✅ Dashboard stats
   async getDashboardStats(): Promise<DashboardStats> {
-    const res = await fetch(`${API_BASE_URL}/dashboard-stats`);
-    return this.handleResponse<DashboardStats>(res);
+    const request = axiosInstance.get<DashboardStats>('/dashboard-stats');
+    return this.handleRequest(request);
   }
  
+  // ✅ Attendance data
   async getAttendanceData(): Promise<AttendanceData[]> {
-    const res = await fetch(`${API_BASE_URL}/attendance-data`);
-    return this.handleResponse<AttendanceData[]>(res);
+    const request = axiosInstance.get<AttendanceData[]>('/attendance-data');
+    return this.handleRequest(request);
   }
  
+  // ✅ Reset password
   async resetPassword(email: string): Promise<{ message: string }> {
-    const res = await fetch(`${API_BASE_URL}/reset-password`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+    const request = axiosInstance.post<{ message: string }>('/reset-password', {
+      email,
     });
-    return this.handleResponse<{ message: string }>(res);
+    return this.handleRequest(request);
   }
 }
  
 export const apiService = new ApiService();
- 

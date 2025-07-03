@@ -44,9 +44,9 @@ export default defineConfig({
                 maxEntries: 10,
                 maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
               },
-              cacheKeyWillBeUsed: async ({ request }) => {
-                return `${request.url}?version=1`;
-              }
+              // cacheKeyWillBeUsed: async ({ request }) => {
+              //   return `${request.url}?version=1`;
+              // }
             }
           }
         ]
@@ -61,4 +61,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  
 });
